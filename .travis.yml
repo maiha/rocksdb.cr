@@ -1,4 +1,7 @@
 language: crystal
-sudo: false
+addons:
+  apt:
+    packages:
+    - librocksdb-dev
 script:
   - make test

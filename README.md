@@ -41,6 +41,11 @@ db.close
 - [x] `get`, `put`
 - [ ] `delete`
 
+## Testing
+
+- Manual test has passed in local with `librocksdb-dev`
+- Unfortunately, we can't run ci on TravisCI which doesn't support ubuntu-16.04.
+
 ## Contributing
 
 1. Fork it ( https://github.com/maiha/rocksdb.cr/fork )

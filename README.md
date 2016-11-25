@@ -1,6 +1,6 @@
 # rocksdb.cr
 
-rocksdb for [Crystal](http://crystal-lang.org/).
+RocksDB client for [Crystal](http://crystal-lang.org/).
 
 - crystal: 0.20.0
 
@@ -11,7 +11,7 @@ Add this to your application's `shard.yml`:
 
 ```yaml
 dependencies:
-  rocksdb.cr:
+  rocksdb:
     github: maiha/rocksdb.cr
 ```
 
@@ -21,14 +21,25 @@ dependencies:
 
 ```crystal
 require "rocksdb"
+
+db = RocksDB::DB.new("tmp/db1")
+
+db.put("foo", "1")
+db.get("foo")      # => "1"
+
+db.get("xxx")      # => ""
+db.get?("xxx")     # => nil
+db.get!("xxx")     # raise RocksDB::NotFound.new("xxx")
+
+db.close
 ```
 
+## Roadmap
 
-TODO: Write usage instructions here
+#### 0.2.0
 
-## Development
-
-TODO: Write development instructions here
+- [x] `get`, `put`
+- [ ] `delete`
 
 ## Contributing
 

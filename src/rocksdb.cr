@@ -1,5 +1,4 @@
-require "./rocksdb/*"
+require "./lib_rocksdb"
 
-module Rocksdb
-  # TODO Put your code here
-end
+require "./rocksdb/types"
+require "./rocksdb/*"

@@ -1,36 +1,5 @@
 @[Link("rocksdb")]
 lib LibRocksDB
-  alias RocksdbT = Void
-  alias RocksdbBackupEngineT = Void
-  alias RocksdbBackupEngineInfoT = Void
-  alias RocksdbRestoreOptionsT = Void
-  alias RocksdbCacheT = Void
-  alias RocksdbCompactionfilterT = Void
-  alias RocksdbCompactionfiltercontextT = Void
-  alias RocksdbCompactionfilterfactoryT = Void
-  alias RocksdbComparatorT = Void
-  alias RocksdbEnvT = Void
-  alias RocksdbFifoCompactionOptionsT = Void
-  alias RocksdbFilelockT = Void
-  alias RocksdbFilterpolicyT = Void
-  alias RocksdbFlushoptionsT = Void
-  alias RocksdbIteratorT = Void
-  alias RocksdbLoggerT = Void
-  alias RocksdbMergeoperatorT = Void
-  alias RocksdbOptionsT = Void
-  alias RocksdbBlockBasedTableOptionsT = Void
-  alias RocksdbCuckooTableOptionsT = Void
-  alias RocksdbRandomfileT = Void
-  alias RocksdbReadoptionsT = Void
-  alias RocksdbSeqfileT = Void
-  alias RocksdbSlicetransformT = Void
-  alias RocksdbSnapshotT = Void
-  alias RocksdbWritablefileT = Void
-  alias RocksdbWritebatchT = Void
-  alias RocksdbWriteoptionsT = Void
-  alias RocksdbUniversalCompactionOptionsT = Void
-  alias RocksdbLivefilesT = Void
-  alias RocksdbColumnFamilyHandleT = Void
   fun rocksdb_open(options : RocksdbOptionsT, name : LibC::Char*, errptr : LibC::Char**) : RocksdbT
   type RocksdbOptionsT = Void*
   type RocksdbT = Void*

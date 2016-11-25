@@ -1,0 +1,4 @@
+language: crystal
+sudo: false
+script:
+  - make test

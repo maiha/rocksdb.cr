@@ -4,8 +4,13 @@ RocksDB client for [Crystal](http://crystal-lang.org/).
 
 - crystal: 0.20.0
 
-## Installation
 
+## Supported API
+
+See [API](https://github.com/maiha/rocksdb.cr/blob/master/API.md)
+
+
+## Installation
 
 Add this to your application's `shard.yml`:
 
@@ -37,10 +42,10 @@ db.close
 
 ## Roadmap
 
-#### 0.2.0
+#### 0.3.0
 
-- [x] `get`, `put`
-- [x] `delete`
+- [x] `each`, `keys`
+
 
 ## Testing
 

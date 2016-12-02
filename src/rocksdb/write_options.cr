@@ -7,6 +7,6 @@ class RocksDB::WriteOptions
   end
 
   protected def free
-    LibRocksDB.rocksdb_writeoptions_destroy(@raw)
+    LibRocksDB.rocksdb_writeoptions_destroy(raw)
   end
 end

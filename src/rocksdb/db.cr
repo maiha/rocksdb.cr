@@ -8,6 +8,10 @@ class RocksDB::DB
   @read_options  : ReadOptions
   @write_options : WriteOptions
 
+  getter! raw
+  getter! read_options
+  getter! write_options
+
   def initialize(@path : String, options : Options? = nil, read_options : ReadOptions? = nil, write_options : WriteOptions? = nil)
     @raw_values = [] of RawValue
 
@@ -25,7 +29,7 @@ class RocksDB::DB
   protected def free
     @raw_values.each(&.close)
     @raw_values.clear
-    LibRocksDB.rocksdb_close(@raw)
+    rocksdb_close(raw)
   end
 
   protected def raw_value(value)
@@ -36,15 +40,9 @@ class RocksDB::DB
   @[AlwaysInline]
   private def db
     if opened?
-      @raw
+      raw
     else
       raise Error.new("RocksDB(#{@path}) is closed.")
     end
   end
-
-  macro method_missing(call)
-    LibRocksDB.{{call.name.id}}({{*call.args}}, @err).tap {
-      raise "ERR: {{call.name}} #{String.new(@err.value)}" if !@err.value.null?
-    }
-  end                          
 end

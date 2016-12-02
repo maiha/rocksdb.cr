@@ -7,6 +7,6 @@ class RocksDB::ReadOptions
   end
 
   protected def free
-    LibRocksDB.rocksdb_readoptions_destroy(@raw)
+    LibRocksDB.rocksdb_readoptions_destroy(raw)
   end
 end

@@ -1,34 +1,31 @@
+require "./commands/*"
+
 module RocksDB::Commands
-  def get?(key : String) : String?
-    ptr = rocksdb_get(db, @read_options.raw, key, key.bytesize, @len)
-    @len.value == 0 ? nil : String.new(ptr, @len.value)
+  # Define all commands explicitly for the purpose of
+  # 1. automatically generate `API.md` which shows supported api
+  # 2. show pretty messages rather than ugly macro code when method missing
+
+  # A macro to call normal functions of rocksdb
+  macro normal(name)
+    def {{name.id}}(*args)
+      LibRocksDB.{{name.id}}(*args)
+    end
   end
 
-  def get(key : String) : String
-    get?(key) || ""
+  # A macro to call status functions of rocksdb
+  macro status(name)
+    def {{name.id}}(*args)
+      LibRocksDB.{{name.id}}(*args, @err).tap {
+        raise "ERR: {{name}} #{String.new(@err.value)}" if !@err.value.null?
+      }
+    end
   end
 
-  def get!(key : String) : String
-    get?(key) || raise NotFound.new(key)
-  end
+  ### Basic
 
-  def []?(key : String) : String?
-    get?(key)
-  end
-  
-  def [](key : String) : String
-    get(key)
-  end
-  
-  def put(key : String, value : String)
-    rocksdb_put(db, @write_options.raw, key, key.bytesize, value, value.bytesize)
-  end
-
-  def []=(key : String, value : String)
-    put(key, value)
-  end
-
-  def delete(key : String)
-    rocksdb_delete(db, @write_options.raw, key, key.bytesize)
-  end
+  status rocksdb_open
+  normal rocksdb_close
+  status rocksdb_get
+  status rocksdb_put
+  status rocksdb_delete
 end

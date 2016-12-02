@@ -7,7 +7,7 @@ class RocksDB::Options
   end
 
   protected def free
-    LibRocksDB.rocksdb_options_destroy(@raw)
+    LibRocksDB.rocksdb_options_destroy(raw)
   end
 
   def create!
@@ -16,6 +16,6 @@ class RocksDB::Options
   end
 
   macro method_missing(call)
-    LibRocksDB.rocksdb_options_{{call.name.id}}(@raw, {{*call.args}})
+    LibRocksDB.rocksdb_options_{{call.name.id}}(raw, {{*call.args}})
   end                          
 end

@@ -13,7 +13,7 @@ end
 module RocksDB::Value(T)
   @opened : Bool = false
 
-  getter raw : T
+  getter! raw : T
   
   def opened?
     @opened

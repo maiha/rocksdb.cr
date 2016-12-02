@@ -1,0 +1,5 @@
+rocksdb_close
+rocksdb_delete
+rocksdb_get
+rocksdb_open
+rocksdb_put

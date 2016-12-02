@@ -11,9 +11,15 @@ module RocksDB
 end
 
 module RocksDB::Value(T)
-  @opened : Bool = false
+  @opened : Bool
 
-  getter! raw : T
+  @raw : T?
+
+  @[AlwaysInline]
+  def raw : T
+    raise Error.new("RocksDB(#{clue}) is closed.") if closed?
+    @raw.not_nil!
+  end
   
   def opened?
     @opened
@@ -31,4 +37,5 @@ module RocksDB::Value(T)
   end
 
   protected abstract def free : Nil
+  protected abstract def clue : String
 end

@@ -46,20 +46,20 @@
 |`rocksdb_multi_get`   |    |    |    |
 |`rocksdb_multi_get_cf`|    |    |    |
 
-### Iteration (0 / 12)
+### Iteration (8 / 12)
 
 |Command                     |impl|test|note|
 |----------------------------|:--:|:--:|----|
-|`rocksdb_create_iterator`   |    |    |    |
+|`rocksdb_create_iterator`   |  ✓ |    |    |
 |`rocksdb_create_iterator_cf`|    |    |    |
-|`rocksdb_iter_destroy`      |    |    |    |
-|`rocksdb_iter_valid`        |    |    |    |
-|`rocksdb_iter_seek_to_first`|    |    |    |
-|`rocksdb_iter_seek_to_last` |    |    |    |
+|`rocksdb_iter_destroy`      |  ✓ |    |    |
+|`rocksdb_iter_valid`        |  ✓ |    |    |
+|`rocksdb_iter_seek_to_first`|  ✓ |    |    |
+|`rocksdb_iter_seek_to_last` |  ✓ |    |    |
 |`rocksdb_iter_seek`         |    |    |    |
-|`rocksdb_iter_next`         |    |    |    |
-|`rocksdb_iter_prev`         |    |    |    |
-|`rocksdb_iter_key`          |    |    |    |
+|`rocksdb_iter_next`         |  ✓ |    |    |
+|`rocksdb_iter_prev`         |  ✓ |    |    |
+|`rocksdb_iter_key`          |  ✓ |    |    |
 |`rocksdb_iter_value`        |    |    |    |
 |`rocksdb_iter_get_error`    |    |    |    |
 
@@ -140,12 +140,12 @@
 |`rocksdb_cuckoo_options_set_use_module_hash`       |    |    |    |
 |`rocksdb_options_set_cuckoo_table_factory`         |    |    |    |
 
-### Options (0 / 94)
+### Options (3 / 94)
 
 |Command                                                        |impl|test|note|
 |---------------------------------------------------------------|:--:|:--:|----|
-|`rocksdb_options_create`                                       |    |    |    |
-|`rocksdb_options_destroy`                                      |    |    |    |
+|`rocksdb_options_create`                                       |  ✓ |    |    |
+|`rocksdb_options_destroy`                                      |  ✓ |    |    |
 |`rocksdb_options_increase_parallelism`                         |    |    |    |
 |`rocksdb_options_optimize_for_point_lookup`                    |    |    |    |
 |`rocksdb_options_optimize_level_style_compaction`              |    |    |    |
@@ -156,7 +156,7 @@
 |`rocksdb_options_set_merge_operator`                           |    |    |    |
 |`rocksdb_options_set_uint64add_merge_operator`                 |    |    |    |
 |`rocksdb_options_set_compression_per_level`                    |    |    |    |
-|`rocksdb_options_set_create_if_missing`                        |    |    |    |
+|`rocksdb_options_set_create_if_missing`                        |  ✓ |    |    |
 |`rocksdb_options_set_create_missing_column_families`           |    |    |    |
 |`rocksdb_options_set_error_if_exists`                          |    |    |    |
 |`rocksdb_options_set_paranoid_checks`                          |    |    |    |
@@ -239,7 +239,7 @@
 |`rocksdb_options_set_universal_compaction_options`             |    |    |    |
 |`rocksdb_options_set_fifo_compaction_options`                  |    |    |    |
 
-### Compaction (0 / 50)
+### Compaction (4 / 50)
 
 |Command                                                                  |impl|test|note|
 |-------------------------------------------------------------------------|:--:|:--:|----|
@@ -256,16 +256,16 @@
 |`rocksdb_filterpolicy_create_bloom`                                      |    |    |    |
 |`rocksdb_mergeoperator_create`                                           |    |    |    |
 |`rocksdb_mergeoperator_destroy`                                          |    |    |    |
-|`rocksdb_readoptions_create`                                             |    |    |    |
-|`rocksdb_readoptions_destroy`                                            |    |    |    |
+|`rocksdb_readoptions_create`                                             |  ✓ |    |    |
+|`rocksdb_readoptions_destroy`                                            |  ✓ |    |    |
 |`rocksdb_readoptions_set_verify_checksums`                               |    |    |    |
 |`rocksdb_readoptions_set_fill_cache`                                     |    |    |    |
 |`rocksdb_readoptions_set_snapshot`                                       |    |    |    |
 |`rocksdb_readoptions_set_iterate_upper_bound`                            |    |    |    |
 |`rocksdb_readoptions_set_read_tier`                                      |    |    |    |
 |`rocksdb_readoptions_set_tailing`                                        |    |    |    |
-|`rocksdb_writeoptions_create`                                            |    |    |    |
-|`rocksdb_writeoptions_destroy`                                           |    |    |    |
+|`rocksdb_writeoptions_create`                                            |  ✓ |    |    |
+|`rocksdb_writeoptions_destroy`                                           |  ✓ |    |    |
 |`rocksdb_writeoptions_set_sync`                                          |    |    |    |
 |`rocksdb_writeoptions_disable_wal`                                       |    |    |    |
 |`rocksdb_flushoptions_create`                                            |    |    |    |

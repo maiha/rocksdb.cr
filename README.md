@@ -37,6 +37,9 @@ db.get("foo")      # => ""
 db.get?("foo")     # => nil
 db.get!("foo")     # raise RocksDB::NotFound.new("foo")
 
+db.keys            # => ["k1","k2","k3",...]
+db.keys(2)         # => ["k1","k2"]
+
 db.close
 ```
 
@@ -44,8 +47,8 @@ db.close
 
 #### 0.3.0
 
-- [x] `each`, `keys`
-
+- [x] `keys`
+- [ ] `each`
 
 ## Testing
 

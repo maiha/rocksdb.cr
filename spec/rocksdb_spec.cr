@@ -1,6 +1,6 @@
 require "./spec_helper"
 
-describe RocksDB::DB do
+describe RocksDB do
   path = "tmp/db_readme"
 
   it "Example codes" do

@@ -1,43 +1,52 @@
 class RocksDB::Iterator
+  include Api
   include Value(LibRocksDB::RocksdbIteratorT)
-
+  
   @read_options : ReadOptions
 
   def initialize(@db : DB, read_options : ReadOptions? = nil)
     @read_options = (read_options || @db.read_options).not_nil!
-    @raw = LibRocksDB.rocksdb_create_iterator(@db.raw, @read_options.raw)
+    @raw = rocksdb_create_iterator(@db.raw, @read_options.raw)
     @len = Pointer(UInt64).malloc(1_u64)
     @opened = true
   end
 
   def first!
-    LibRocksDB.rocksdb_iter_seek_to_first(raw)
+    rocksdb_iter_seek_to_first(raw)
   end
   
   def last!
-    LibRocksDB.rocksdb_iter_seek_to_last(raw)
+    rocksdb_iter_seek_to_last(raw)
   end
 
   def next!
-    LibRocksDB.rocksdb_iter_next(raw)
+    rocksdb_iter_next(raw)
   end
   
   def prev!
-    LibRocksDB.rocksdb_iter_prev(raw)
+    rocksdb_iter_prev(raw)
   end
   
-#  fun rocksdb_iter_key(x0 : RocksdbIteratorT, klen : LibC::SizeT*) : LibC::Char*
+  def valid?
+    rocksdb_iter_valid(raw) == 1
+  end
+
   def key?
-    ptr = LibRocksDB.rocksdb_iter_key(raw, @len)
+    return nil if !valid?
+    ptr = rocksdb_iter_key(raw, @len)
     @len.value == 0 ? nil : String.new(ptr, @len.value)
   end
 
   def key
     key? || ""
   end
-  
+
   protected def free
-    LibRocksDB.rocksdb_iter_destroy(raw)
+    rocksdb_iter_destroy(raw)
+  end
+
+  protected def clue
+    "iter"
   end
 
 #  fun rocksdb_iter_valid(x0 : RocksdbIteratorT) : UInt8

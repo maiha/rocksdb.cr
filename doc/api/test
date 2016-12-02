@@ -1,3 +1,5 @@
+each
+keys
 rocksdb_close
 rocksdb_delete
 rocksdb_get

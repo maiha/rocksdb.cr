@@ -1,6 +1,8 @@
 module RocksDB::Commands
+  include Api
+  
   def get?(key : String) : String?
-    ptr = rocksdb_get(db, @read_options.raw, key, key.bytesize, @len)
+    ptr = rocksdb_get(raw, @read_options.raw, key, key.bytesize, @len)
     @len.value == 0 ? nil : String.new(ptr, @len.value)
   end
 
@@ -21,7 +23,7 @@ module RocksDB::Commands
   end
   
   def put(key : String, value : String)
-    rocksdb_put(db, @write_options.raw, key, key.bytesize, value, value.bytesize)
+    rocksdb_put(raw, @write_options.raw, key, key.bytesize, value, value.bytesize)
   end
 
   def put(key : String, value)
@@ -33,6 +35,6 @@ module RocksDB::Commands
   end
 
   def delete(key : String)
-    rocksdb_delete(db, @write_options.raw, key, key.bytesize)
+    rocksdb_delete(raw, @write_options.raw, key, key.bytesize)
   end
 end

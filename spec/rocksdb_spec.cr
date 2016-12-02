@@ -17,6 +17,14 @@ describe RocksDB do
       db.close
     end
 
+    it "Delete" do
+      db = RocksDB::DB.new(path)
+      db.get("key").should eq("value")
+      db.delete("key")
+      db.get("key").should eq("")
+      db.close
+    end
+
     it "Empty keys" do
       db = RocksDB::DB.new(path)
       db.get("xxx").should eq("")

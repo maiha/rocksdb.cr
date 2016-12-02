@@ -1,7 +1,7 @@
 module RocksDB::Commands
   def get?(key : String) : String?
     ptr = rocksdb_get(db, @read_options.raw, key, key.bytesize, @len)
-    @len.value == 0 ? nil : String.new(ptr)
+    @len.value == 0 ? nil : String.new(ptr, @len.value)
   end
 
   def get(key : String) : String
@@ -26,5 +26,9 @@ module RocksDB::Commands
 
   def []=(key : String, value : String)
     put(key, value)
+  end
+
+  def delete(key : String)
+    rocksdb_delete(db, @write_options.raw, key, key.bytesize)
   end
 end

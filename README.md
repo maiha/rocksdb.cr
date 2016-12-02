@@ -26,10 +26,11 @@ db = RocksDB::DB.new("tmp/db1")
 
 db.put("foo", "1")
 db.get("foo")      # => "1"
+db.delete("foo")
 
-db.get("xxx")      # => ""
-db.get?("xxx")     # => nil
-db.get!("xxx")     # raise RocksDB::NotFound.new("xxx")
+db.get("foo")      # => ""
+db.get?("foo")     # => nil
+db.get!("foo")     # raise RocksDB::NotFound.new("foo")
 
 db.close
 ```
@@ -39,7 +40,7 @@ db.close
 #### 0.2.0
 
 - [x] `get`, `put`
-- [ ] `delete`
+- [x] `delete`
 
 ## Testing
 

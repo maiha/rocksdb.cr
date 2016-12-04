@@ -13,7 +13,7 @@ end
 private  macro try(name)
   def {{name.id}}(*args)
     LibRocksDB.{{name.id}}(*args, @err).tap {
-      raise "ERR: {{name}} #{String.new(@err.value)}" if !@err.value.null?
+      raise RocksDB::Error.new("ERR: {{name}} #{String.new(@err.value)}") if !@err.value.null?
     }
   end
 end
@@ -22,6 +22,7 @@ module RocksDB::Api
   ### Basic
 
   try rocksdb_open
+  try rocksdb_open_for_read_only
   api rocksdb_close
   try rocksdb_get
   try rocksdb_put

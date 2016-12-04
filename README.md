@@ -39,6 +39,14 @@ db.get!("foo")     # raise RocksDB::NotFound.new("foo")
 db.close
 ```
 
+### readonly mode
+
+```crystal
+db = RocksDB::DB.new("tmp/db1", readonly: true)
+# or RocksDB::DB.read("tmp/db1")
+db.put("foo", "1")  # raise RocksDB::Error("Not supported operation in read only mode.")
+```
+
 ### Iterations
 
 ```shell
@@ -94,6 +102,7 @@ db.get("\u{0}")   # => "\t"
 
 #### 0.4.0
 
+- [x] readonly mode
 - [ ] Iterations for Binary
 
 ## Testing

@@ -15,4 +15,5 @@ rocksdb_iter_seek_to_last
 rocksdb_iter_valid
 rocksdb_iter_value
 rocksdb_open
+rocksdb_open_for_read_only
 rocksdb_put

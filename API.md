@@ -1,12 +1,12 @@
 # Supported API
-## Implemented 8% (22/259)
-### Database (2 / 24)
+## Implemented 8% (23/259)
+### Database (3 / 24)
 
 |Command                                              |impl|test|note|
 |-----------------------------------------------------|:--:|:--:|----|
 |`rocksdb_open`                                       |  ✓ |  ✓ |    |
 |`rocksdb_close`                                      |  ✓ |  ✓ |    |
-|`rocksdb_open_for_read_only`                         |    |    |    |
+|`rocksdb_open_for_read_only`                         |  ✓ |  ✓ |    |
 |`rocksdb_backup_engine_open`                         |    |    |    |
 |`rocksdb_backup_engine_create_new_backup`            |    |    |    |
 |`rocksdb_restore_options_create`                     |    |    |    |

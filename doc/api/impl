@@ -21,3 +21,4 @@ rocksdb_readoptions_destroy
 rocksdb_writeoptions_create
 rocksdb_writeoptions_destroy
 rocksdb_options_set_create_if_missing
+rocksdb_options_set_keep_log_file_num

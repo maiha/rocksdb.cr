@@ -1,5 +1,5 @@
 # Supported API
-## Implemented 8% (23/259)
+## Implemented 9% (24/259)
 ### Database (3 / 24)
 
 |Command                                              |impl|test|note|
@@ -141,7 +141,7 @@
 |`rocksdb_cuckoo_options_set_use_module_hash`       |    |    |    |
 |`rocksdb_options_set_cuckoo_table_factory`         |    |    |    |
 
-### Options (3 / 94)
+### Options (4 / 94)
 
 |Command                                                        |impl|test|note|
 |---------------------------------------------------------------|:--:|:--:|----|
@@ -190,7 +190,7 @@
 |`rocksdb_options_set_max_background_flushes`                   |    |    |    |
 |`rocksdb_options_set_max_log_file_size`                        |    |    |    |
 |`rocksdb_options_set_log_file_time_to_roll`                    |    |    |    |
-|`rocksdb_options_set_keep_log_file_num`                        |    |    |    |
+|`rocksdb_options_set_keep_log_file_num`                        |  ✓ |    |    |
 |`rocksdb_options_set_soft_rate_limit`                          |    |    |    |
 |`rocksdb_options_set_hard_rate_limit`                          |    |    |    |
 |`rocksdb_options_set_rate_limit_delay_max_milliseconds`        |    |    |    |

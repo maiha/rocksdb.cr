@@ -13,8 +13,8 @@ class RocksDB::Iterator
     String.new(ptr, size)
   end
 
-  def initialize(@db : DB, read_options : ReadOptions? = nil)
-    opts = (read_options || @db.read_options).not_nil!
+  def initialize(@db : DB, r_opts : ReadOptions? = nil)
+    opts = (r_opts || @db.r_opts).not_nil!
     @raw = rocksdb_create_iterator(@db.raw, opts.raw)
     @len = Pointer(UInt64).malloc(1_u64)
     @opened = true

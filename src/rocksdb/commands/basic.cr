@@ -2,12 +2,12 @@ module RocksDB::Commands
   include Api
   
   def get?(key : Bytes) : Bytes?
-    ptr = rocksdb_get(raw, @read_options.raw, key, key.bytesize, @len)
+    ptr = rocksdb_get(raw, @r_opts.raw, key, key.bytesize, @len)
     @len.value == 0 ? nil : Bytes.new(ptr, @len.value)
   end
 
   def get?(key : String) : String?
-    ptr = rocksdb_get(raw, @read_options.raw, key, key.bytesize, @len)
+    ptr = rocksdb_get(raw, @r_opts.raw, key, key.bytesize, @len)
     @len.value == 0 ? nil : String.new(ptr, @len.value)
   end
 
@@ -36,11 +36,11 @@ module RocksDB::Commands
   end
   
   def put(key : String, value : String)
-    rocksdb_put(raw, @write_options.raw, key, key.bytesize, value, value.bytesize)
+    rocksdb_put(raw, @w_opts.raw, key, key.bytesize, value, value.bytesize)
   end
 
   def put(key : Bytes, value : Bytes)
-    rocksdb_put(raw, @write_options.raw, key, key.bytesize, value, value.bytesize)
+    rocksdb_put(raw, @w_opts.raw, key, key.bytesize, value, value.bytesize)
   end
 
   def put(key : String, value)
@@ -52,10 +52,10 @@ module RocksDB::Commands
   end
 
   def delete(key : Bytes)
-    rocksdb_delete(raw, @write_options.raw, key, key.bytesize)
+    rocksdb_delete(raw, @w_opts.raw, key, key.bytesize)
   end
 
   def delete(key : String)
-    rocksdb_delete(raw, @write_options.raw, key, key.bytesize)
+    rocksdb_delete(raw, @w_opts.raw, key, key.bytesize)
   end
 end

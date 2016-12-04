@@ -1,8 +1,8 @@
 class RocksDB::DB
-  include Value(LibRocksDB::RocksdbT)
+  include RawMemory(LibRocksDB::RocksdbT)
   include Commands
 
-  alias RawValue = Options | ReadOptions | WriteOptions
+  alias Closable = Options | ReadOptions | WriteOptions
 
   @options       : Options
   @read_options  : ReadOptions
@@ -12,11 +12,11 @@ class RocksDB::DB
   getter! write_options
 
   def initialize(@path : String, options : Options? = nil, read_options : ReadOptions? = nil, write_options : WriteOptions? = nil)
-    @raw_values = [] of RawValue
+    @closables = [] of Closable
 
-    @options       = options       || raw_value(Options.new.set_create_if_missing(1))
-    @read_options  = read_options  || raw_value(ReadOptions.new)
-    @write_options = write_options || raw_value(WriteOptions.new)
+    @options       = options       || mark_closable(Options.new.set_create_if_missing(1))
+    @read_options  = read_options  || mark_closable(ReadOptions.new)
+    @write_options = write_options || mark_closable(WriteOptions.new)
 
     @len = Pointer(UInt64).malloc(1_u64)
     @err = Pointer(Pointer(UInt8)).malloc(1_u64)
@@ -25,8 +25,8 @@ class RocksDB::DB
   end
 
   protected def free
-    @raw_values.each(&.close)
-    @raw_values.clear
+    @closables.each(&.close)
+    @closables.clear
     rocksdb_close(@raw.not_nil!)
   end
 
@@ -34,8 +34,8 @@ class RocksDB::DB
     @path
   end
 
-  protected def raw_value(value)
-    @raw_values << value
+  protected def mark_closable(value)
+    @closables << value
     value
   end
 end

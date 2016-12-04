@@ -1,8 +1,15 @@
 module RocksDB::Commands
   include Api
-  
+
   def each(&block)
-    iter = Iterator.new(self)
+    iter = StringIterator.new(self)
+    iter.first!
+    while iter.valid?
+      yield({iter.key, iter.value})
+      iter.next!
+    end
+  ensure
+    iter.try(&.close)
   end
 
   def keys(limit = Int32::MAX)

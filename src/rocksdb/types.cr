@@ -14,7 +14,7 @@ module RocksDB
   end
 end
 
-module RocksDB::Value(T)
+module RocksDB::RawMemory(T)
   @opened : Bool
 
   @raw : T?

@@ -23,13 +23,11 @@ describe "Iterations" do
 
   it "#each" do
     db = RocksDB::DB.new(path)
-
     items = [] of Tuple(String, String)
     db.each do |k,v|
       items << {k, v}
     end
-    items.should eq(%w( k0 k1 k2 k3 k4 ))
-      
+    items.should eq([{"k0", "0"}, {"k1", "1"}, {"k2", "2"}, {"k3", "3"}, {"k4", "4"}])
     db.close
   end
 end

@@ -3,7 +3,7 @@ macro option_class(klass)
   {% method  = klass.stringify.downcase %}
   class RocksDB::{{ klass.id }}
     include Api
-    include Value({{ underly.id }})
+    include RawMemory({{ underly.id }})
 
     def initialize
       @raw = rocksdb_{{ method.id }}_create

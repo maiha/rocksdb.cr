@@ -36,10 +36,10 @@ module RocksDB::Api
   api rocksdb_iter_prev
   api rocksdb_iter_next
   api rocksdb_iter_key
+  api rocksdb_iter_value
   api rocksdb_iter_valid
 
 #  fun rocksdb_iter_seek(x0 : RocksdbIteratorT, k : LibC::Char*, klen : LibC::SizeT)
-#  fun rocksdb_iter_value(x0 : RocksdbIteratorT, vlen : LibC::SizeT*) : LibC::Char*
 #  fun rocksdb_iter_get_error(x0 : RocksdbIteratorT, errptr : LibC::Char**)
 
 

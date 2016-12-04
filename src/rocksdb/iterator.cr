@@ -1,7 +1,10 @@
-class RocksDB::Iterator
+abstract class RocksDB::Iterator(T)
   include Api
-  include Value(LibRocksDB::RocksdbIteratorT)
+  include RawMemory(LibRocksDB::RocksdbIteratorT)
   
+  protected abstract def zero : T
+  protected abstract def underly(ptr, size) : T
+
   @read_options : ReadOptions
 
   def initialize(@db : DB, read_options : ReadOptions? = nil)
@@ -31,14 +34,24 @@ class RocksDB::Iterator
     rocksdb_iter_valid(raw) == 1
   end
 
+  def key
+    ptr = rocksdb_iter_key(raw, @len)
+    underly(ptr, @len.value)
+  end
+
+  def value
+    ptr = rocksdb_iter_value(raw, @len)
+    underly(ptr, @len.value)
+  end
+
   def key?
     return nil if !valid?
     ptr = rocksdb_iter_key(raw, @len)
-    @len.value == 0 ? nil : String.new(ptr, @len.value)
+    @len.value == 0 ? nil : underly(ptr, @len.value)
   end
 
   def key
-    key? || ""
+    key? || zero
   end
 
   protected def free
@@ -54,4 +67,16 @@ class RocksDB::Iterator
 #  fun rocksdb_iter_value(x0 : RocksdbIteratorT, vlen : LibC::SizeT*) : LibC::Char*
 #  fun rocksdb_iter_get_error(x0 : RocksdbIteratorT, errptr : LibC::Char**)
 
+end
+
+module RocksDB
+  class StringIterator < Iterator(String)
+    protected def zero
+      ""
+    end
+
+    protected def underly(ptr, size) : String
+      String.new(ptr, size)
+    end
+  end
 end

@@ -9,6 +9,7 @@ rocksdb_iter_prev
 rocksdb_iter_seek_to_first
 rocksdb_iter_seek_to_last
 rocksdb_iter_valid
+rocksdb_iter_value
 rocksdb_open
 rocksdb_options_create
 rocksdb_options_destroy

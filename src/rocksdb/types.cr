@@ -7,6 +7,10 @@ module RocksDB
     def initialize(@key : String)
       super("Not Found: '#{@key}'")
     end
+
+    def initialize(@key : Bytes)
+      super("Not Found: '#{@key}'")
+    end
   end
 end
 

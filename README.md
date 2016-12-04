@@ -23,7 +23,6 @@ dependencies:
 
 ## Usage
 
-
 ```crystal
 require "rocksdb"
 
@@ -41,6 +40,17 @@ db.keys            # => ["k1","k2","k3",...]
 db.keys(2)         # => ["k1","k2"]
 
 db.close
+```
+
+### binary data
+
+Although all data are stored as Binary in RocksDB,
+return value will be converted to String when accessed by String key.
+
+```shell
+db.put(Bytes[0], Bytes[9])
+db.get(Bytes[0])  # => Bytes[9]
+db.get("\u{0}")   # => "\t"
 ```
 
 ## Roadmap

@@ -1,6 +1,6 @@
 API_IMPLS := src/rocksdb/api.cr
 OPT_IMPLS := src/rocksdb/options.cr
-CMD_TESTS := $(shell find spec/commands -name '*.cr')
+CMD_TESTS := $(shell find spec -name '*_spec.cr')
 API_FILES := $(shell find doc/api -name '*.*')
 
 .PHONY : all

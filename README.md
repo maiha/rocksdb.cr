@@ -36,10 +36,42 @@ db.get("foo")      # => ""
 db.get?("foo")     # => nil
 db.get!("foo")     # raise RocksDB::NotFound.new("foo")
 
-db.keys            # => ["k1","k2","k3",...]
-db.keys(2)         # => ["k1","k2"]
-
 db.close
+```
+
+### Iterations
+
+```shell
+3.times{|i| db.put("k#{i}", i) }
+db.keys            # => ["k0","k1","k2"]
+db.keys(2)         # => ["k0","k1"]
+
+db.each do |(k,v)|
+```
+
+### Iterator
+
+```shell
+iter = db.new_iterator
+iter.key           # => "k0"
+iter.next
+iter.value         # => "1"
+iter.first
+iter.key           # => "k0"
+iter.seek("k2")
+iter.next
+iter.valid?        # => false
+```
+
+- same as `each`
+
+```shell
+iter = db.new_iterator
+iter.first
+while (iter.valid?)
+  # yield {iter.key, iter.value}
+  iter.next
+end  
 ```
 
 ### binary data
@@ -57,8 +89,12 @@ db.get("\u{0}")   # => "\t"
 
 #### 0.3.0
 
-- [x] `keys`
-- [ ] `each`
+- [x] `keys` (String)
+- [x] `each` (String)
+
+#### 0.4.0
+
+- [ ] Iterations for Binary
 
 ## Testing
 

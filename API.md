@@ -1,5 +1,5 @@
 # Supported API
-## Implemented 7% (20/259)
+## Implemented 8% (22/259)
 ### Database (2 / 24)
 
 |Command                                              |impl|test|note|
@@ -47,21 +47,21 @@
 |`rocksdb_multi_get`   |    |    |    |
 |`rocksdb_multi_get_cf`|    |    |    |
 
-### Iteration (8 / 12)
+### Iteration (10 / 12)
 
 |Command                     |impl|test|note|
 |----------------------------|:--:|:--:|----|
-|`rocksdb_create_iterator`   |  ✓ |    |    |
+|`rocksdb_create_iterator`   |  ✓ |  ✓ |    |
 |`rocksdb_create_iterator_cf`|    |    |    |
-|`rocksdb_iter_destroy`      |  ✓ |    |    |
-|`rocksdb_iter_valid`        |  ✓ |    |    |
-|`rocksdb_iter_seek_to_first`|  ✓ |    |    |
-|`rocksdb_iter_seek_to_last` |  ✓ |    |    |
-|`rocksdb_iter_seek`         |    |    |    |
-|`rocksdb_iter_next`         |  ✓ |    |    |
-|`rocksdb_iter_prev`         |  ✓ |    |    |
-|`rocksdb_iter_key`          |  ✓ |    |    |
-|`rocksdb_iter_value`        |    |    |    |
+|`rocksdb_iter_destroy`      |  ✓ |  ✓ |    |
+|`rocksdb_iter_valid`        |  ✓ |  ✓ |    |
+|`rocksdb_iter_seek_to_first`|  ✓ |  ✓ |    |
+|`rocksdb_iter_seek_to_last` |  ✓ |  ✓ |    |
+|`rocksdb_iter_seek`         |  ✓ |  ✓ |    |
+|`rocksdb_iter_next`         |  ✓ |  ✓ |    |
+|`rocksdb_iter_prev`         |  ✓ |  ✓ |    |
+|`rocksdb_iter_key`          |  ✓ |  ✓ |    |
+|`rocksdb_iter_value`        |  ✓ |  ✓ |    |
 |`rocksdb_iter_get_error`    |    |    |    |
 
 ### Snapshots (0 / 15)

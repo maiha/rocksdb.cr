@@ -1,4 +1,5 @@
 # Supported API
+## Implemented 7% (20/259)
 ### Database (2 / 24)
 
 |Command                                              |impl|test|note|

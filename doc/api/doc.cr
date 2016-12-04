@@ -8,7 +8,7 @@ note = File.read("#{__DIR__}/note")
 group = nil
 items = [] of String
 
-count = ->(g : String) { list.count(&.=~ /^#{g}/) }
+count = ->(g : String) { list.count(&.=~ /^#{g}\t/) }
 note_for = ->(key : String) {
   note.scan(/^#{key}\t(.*?)$/m) do
     return $1
@@ -43,6 +43,8 @@ flush = ->(g : String?) {
 ### Main
 
 puts "# Supported API"
+
+puts "## Implemented %d%% (%d/%d)" % [(impl.size*100/list.size), impl.size, list.size]
 
 list.each do |line|
   g, n = line.chomp.split(/\t/,2)

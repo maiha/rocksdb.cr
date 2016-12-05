@@ -7,7 +7,7 @@ RocksDB client for [Crystal](http://crystal-lang.org/).
 
 ## Supported API
 
-See [API](https://github.com/maiha/rocksdb.cr/blob/master/API.md)
+See [API](./API.md)
 
 
 ## Installation
@@ -49,17 +49,18 @@ db.put("foo", "1")  # raise RocksDB::Error("Not supported operation in read only
 
 ### Iterations
 
-```shell
+```crystal
 3.times{|i| db.put("k#{i}", i) }
 db.keys            # => ["k0","k1","k2"]
 db.keys(2)         # => ["k0","k1"]
 
 db.each do |(k,v)|
+  ...
 ```
 
 ### Iterator
 
-```shell
+```crystal
 iter = db.new_iterator
 iter.key           # => "k0"
 iter.next
@@ -69,17 +70,20 @@ iter.key           # => "k0"
 iter.seek("k2")
 iter.next
 iter.valid?        # => false
+
+iter.close  # memory leaks when you forget this
 ```
 
 - same as `each`
 
-```shell
+```crystal
 iter = db.new_iterator
 iter.first
 while (iter.valid?)
   # yield {iter.key, iter.value}
   iter.next
 end  
+iter.close  # memory leaks when you forget this
 ```
 
 ### binary data
@@ -87,11 +91,22 @@ end
 Although all data are stored as Binary in RocksDB,
 return value will be converted to String when accessed by String key.
 
-```shell
+```crystal
 db.put(Bytes[0], Bytes[9])
 db.get(Bytes[0])  # => Bytes[9]
 db.get("\u{0}")   # => "\t"
 ```
+
+### database options
+
+```crystal
+options = RocksDB::Options.new
+options.set_create_if_missing(1)
+
+db = RocksDB::DB.new("tmp/db1", options: options)
+```
+
+- all options: [options.cr](./src/rocksdb/options.cr)
 
 ## Roadmap
 

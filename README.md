@@ -99,11 +99,22 @@ db.get("\u{0}")   # => "\t"
 
 ### database options
 
-```crystal
-options = RocksDB::Options.new
-options.set_create_if_missing(1)
+- `options`  for opening database
+- `read_options`  for reading data
+- `write_options`  for writing data
 
-db = RocksDB::DB.new("tmp/db1", options: options)
+```crystal
+opts = RocksDB::Options.new
+opts.set_create_if_missing(1)
+
+ropts = RocksDB::ReadOptions.new
+ropts.set_verify_checksum(1)
+
+wopts = RocksDB::WriteOptions.new
+wopts.set_sync(1)
+wopts.disable_wal(1)
+
+db = RocksDB::DB.new("tmp/db1", options: opts, read_options: ropts, write_options: wopts)
 ```
 
 - all options: [options.cr](./src/rocksdb/options.cr)

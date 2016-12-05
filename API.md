@@ -1,5 +1,5 @@
 # Supported API
-## Implemented 33% (88/259)
+## Implemented 35% (93/259)
 ### Database (3 / 24)
 
 |Command                                              |impl|test|note|
@@ -157,7 +157,7 @@
 |`rocksdb_options_set_merge_operator`                           |    |    |    |
 |`rocksdb_options_set_uint64add_merge_operator`                 |    |    |    |
 |`rocksdb_options_set_compression_per_level`                    |    |    |    |
-|`rocksdb_options_set_create_if_missing`                        |  ✓ |    |    |
+|`rocksdb_options_set_create_if_missing`                        |  ✓ |  ✓ |    |
 |`rocksdb_options_set_create_missing_column_families`           |  ✓ |    |    |
 |`rocksdb_options_set_error_if_exists`                          |  ✓ |    |    |
 |`rocksdb_options_set_paranoid_checks`                          |  ✓ |    |    |
@@ -240,7 +240,29 @@
 |`rocksdb_options_set_universal_compaction_options`             |    |    |    |
 |`rocksdb_options_set_fifo_compaction_options`                  |    |    |    |
 
-### Compaction (4 / 50)
+### Read options (6 / 8)
+
+|Command                                      |impl|test|note|
+|---------------------------------------------|:--:|:--:|----|
+|`rocksdb_readoptions_create`                 |  ✓ |    |    |
+|`rocksdb_readoptions_destroy`                |  ✓ |    |    |
+|`rocksdb_readoptions_set_verify_checksums`   |  ✓ |  ✓ |    |
+|`rocksdb_readoptions_set_fill_cache`         |  ✓ |    |    |
+|`rocksdb_readoptions_set_snapshot`           |    |    |    |
+|`rocksdb_readoptions_set_iterate_upper_bound`|    |    |    |
+|`rocksdb_readoptions_set_read_tier`          |  ✓ |    |    |
+|`rocksdb_readoptions_set_tailing`            |  ✓ |    |    |
+
+### Write options (4 / 4)
+
+|Command                           |impl|test|note|
+|----------------------------------|:--:|:--:|----|
+|`rocksdb_writeoptions_create`     |  ✓ |    |    |
+|`rocksdb_writeoptions_destroy`    |  ✓ |    |    |
+|`rocksdb_writeoptions_set_sync`   |  ✓ |  ✓ |    |
+|`rocksdb_writeoptions_disable_wal`|  ✓ |  ✓ |    |
+
+### Compaction (0 / 38)
 
 |Command                                                                  |impl|test|note|
 |-------------------------------------------------------------------------|:--:|:--:|----|
@@ -257,18 +279,6 @@
 |`rocksdb_filterpolicy_create_bloom`                                      |    |    |    |
 |`rocksdb_mergeoperator_create`                                           |    |    |    |
 |`rocksdb_mergeoperator_destroy`                                          |    |    |    |
-|`rocksdb_readoptions_create`                                             |  ✓ |    |    |
-|`rocksdb_readoptions_destroy`                                            |  ✓ |    |    |
-|`rocksdb_readoptions_set_verify_checksums`                               |    |    |    |
-|`rocksdb_readoptions_set_fill_cache`                                     |    |    |    |
-|`rocksdb_readoptions_set_snapshot`                                       |    |    |    |
-|`rocksdb_readoptions_set_iterate_upper_bound`                            |    |    |    |
-|`rocksdb_readoptions_set_read_tier`                                      |    |    |    |
-|`rocksdb_readoptions_set_tailing`                                        |    |    |    |
-|`rocksdb_writeoptions_create`                                            |  ✓ |    |    |
-|`rocksdb_writeoptions_destroy`                                           |  ✓ |    |    |
-|`rocksdb_writeoptions_set_sync`                                          |    |    |    |
-|`rocksdb_writeoptions_disable_wal`                                       |    |    |    |
 |`rocksdb_flushoptions_create`                                            |    |    |    |
 |`rocksdb_flushoptions_destroy`                                           |    |    |    |
 |`rocksdb_flushoptions_set_wait`                                          |    |    |    |

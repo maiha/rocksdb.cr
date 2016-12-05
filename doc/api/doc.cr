@@ -44,7 +44,8 @@ flush = ->(g : String?) {
 
 puts "# Supported API"
 
-puts "## Implemented %d%% (%d/%d)" % [(impl.size*100/list.size), impl.size, list.size]
+impl_cnt = (list.map(&.split(/\t/,2).last).flatten.to_set & impl.to_set).size
+puts "## Implemented %d%% (%d/%d)" % [(impl_cnt*100/list.size), impl_cnt, list.size]
 
 list.each do |line|
   g, n = line.chomp.split(/\t/,2)

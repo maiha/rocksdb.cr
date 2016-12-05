@@ -16,4 +16,8 @@ rocksdb_iter_valid
 rocksdb_iter_value
 rocksdb_open
 rocksdb_open_for_read_only
+rocksdb_options_set_create_if_missing
 rocksdb_put
+rocksdb_readoptions_set_verify_checksums
+rocksdb_writeoptions_disable_wal
+rocksdb_writeoptions_set_sync

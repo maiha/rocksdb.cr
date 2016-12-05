@@ -11,7 +11,24 @@ describe RocksDB do
     db.get("key").should eq("")
     db.delete("key") # success to delete non-exist key
     db.close
+
+    opts = RocksDB::Options.new
+    opts.set_create_if_missing(1)
+
+    ropts = RocksDB::ReadOptions.new
+    ropts.set_verify_checksums(1)
+
+    wopts = RocksDB::WriteOptions.new
+    wopts.set_sync(1)
+    wopts.disable_wal(1)
+
+    db = RocksDB::DB.new("tmp/db1", options: opts, read_options: ropts, write_options: wopts)
+    db.close
   end
+  it "#rocksdb_options_set_create_if_missing" do; end
+  it "#rocksdb_readoptions_set_verify_checksums" do; end
+  it "#rocksdb_writeoptions_set_sync" do; end
+  it "#rocksdb_writeoptions_disable_wal" do; end
 
   it "Persistence" do
     db = RocksDB::DB.new(path)

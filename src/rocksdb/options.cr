@@ -96,7 +96,15 @@ option_class Options do
 end
 
 option_class ReadOptions do
+  option set_verify_checksums
+  option set_fill_cache
+#  option set_snapshot(x0 : RocksdbReadoptionsT, x1 : RocksdbSnapshotT)
+#  option set_iterate_upper_bound(x0 : RocksdbReadoptionsT, key : LibC::Char*, keylen : LibC::SizeT)
+  option set_read_tier
+  option set_tailing
 end
 
 option_class WriteOptions do
+  option set_sync
+  option disable_wal
 end

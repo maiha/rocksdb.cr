@@ -1,5 +1,5 @@
 # Supported API
-## Implemented 35% (93/259)
+## Implemented 38% (101/259)
 ### Database (3 / 24)
 
 |Command                                              |impl|test|note|
@@ -141,16 +141,16 @@
 |`rocksdb_cuckoo_options_set_use_module_hash`       |    |    |    |
 |`rocksdb_options_set_cuckoo_table_factory`         |    |    |    |
 
-### Options (67 / 94)
+### Options (75 / 94)
 
 |Command                                                        |impl|test|note|
 |---------------------------------------------------------------|:--:|:--:|----|
 |`rocksdb_options_create`                                       |  ✓ |    |    |
 |`rocksdb_options_destroy`                                      |  ✓ |    |    |
 |`rocksdb_options_increase_parallelism`                         |  ✓ |    |    |
-|`rocksdb_options_optimize_for_point_lookup`                    |    |    |    |
-|`rocksdb_options_optimize_level_style_compaction`              |    |    |    |
-|`rocksdb_options_optimize_universal_style_compaction`          |    |    |    |
+|`rocksdb_options_optimize_for_point_lookup`                    |  ✓ |    |    |
+|`rocksdb_options_optimize_level_style_compaction`              |  ✓ |    |    |
+|`rocksdb_options_optimize_universal_style_compaction`          |  ✓ |    |    |
 |`rocksdb_options_set_compaction_filter`                        |    |    |    |
 |`rocksdb_options_set_compaction_filter_factory`                |    |    |    |
 |`rocksdb_options_set_comparator`                               |    |    |    |
@@ -181,7 +181,7 @@
 |`rocksdb_options_set_expanded_compaction_factor`               |  ✓ |    |    |
 |`rocksdb_options_set_max_grandparent_overlap_factor`           |  ✓ |    |    |
 |`rocksdb_options_set_max_bytes_for_level_multiplier_additional`|    |    |    |
-|`rocksdb_options_enable_statistics`                            |    |    |    |
+|`rocksdb_options_enable_statistics`                            |  ✓ |    |    |
 |`rocksdb_options_statistics_get_string`                        |    |    |    |
 |`rocksdb_options_set_max_write_buffer_number`                  |  ✓ |    |    |
 |`rocksdb_options_set_min_write_buffer_number_to_merge`         |  ✓ |    |    |
@@ -201,8 +201,8 @@
 |`rocksdb_options_set_use_fsync`                                |  ✓ |    |    |
 |`rocksdb_options_set_db_log_dir`                               |    |    |    |
 |`rocksdb_options_set_wal_dir`                                  |    |    |    |
-|`rocksdb_options_set_wal_ttl_seconds`                          |    |    |    |
-|`rocksdb_options_set_wal_size_limit_mb`                        |    |    |    |
+|`rocksdb_options_set_wal_ttl_seconds`                          |  ✓ |    |    |
+|`rocksdb_options_set_wal_size_limit_mb`                        |  ✓ |    |    |
 |`rocksdb_options_set_manifest_preallocation_size`              |  ✓ |    |    |
 |`rocksdb_options_set_purge_redundant_kvs_while_flush`          |  ✓ |    |    |
 |`rocksdb_options_set_allow_os_buffer`                          |  ✓ |    |    |
@@ -222,8 +222,8 @@
 |`rocksdb_options_set_disable_auto_compactions`                 |  ✓ |    |    |
 |`rocksdb_options_set_delete_obsolete_files_period_micros`      |  ✓ |    |    |
 |`rocksdb_options_set_source_compaction_factor`                 |  ✓ |    |    |
-|`rocksdb_options_prepare_for_bulk_load`                        |    |    |    |
-|`rocksdb_options_set_memtable_vector_rep`                      |    |    |    |
+|`rocksdb_options_prepare_for_bulk_load`                        |  ✓ |    |    |
+|`rocksdb_options_set_memtable_vector_rep`                      |  ✓ |    |    |
 |`rocksdb_options_set_hash_skip_list_rep`                       |  ✓ |    |    |
 |`rocksdb_options_set_hash_link_list_rep`                       |  ✓ |    |    |
 |`rocksdb_options_set_plain_table_factory`                      |  ✓ |    |    |

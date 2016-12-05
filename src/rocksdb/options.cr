@@ -6,9 +6,9 @@ option_class Options do
   option set_create_if_missing
   option set_keep_log_file_num
   option increase_parallelism
-#  option optimize_for_point_lookup(opt : RocksdbOptionsT, block_cache_size_mb : Uint64T)
-#  option optimize_level_style_compaction(opt : RocksdbOptionsT, memtable_memory_budget : Uint64T)
-#  option optimize_universal_style_compaction(opt : RocksdbOptionsT, memtable_memory_budget : Uint64T)
+  option optimize_for_point_lookup
+  option optimize_level_style_compaction
+  option optimize_universal_style_compaction
 #  option set_compaction_filter(x0 : RocksdbOptionsT, x1 : RocksdbCompactionfilterT)
 #  option set_compaction_filter_factory(x0 : RocksdbOptionsT, x1 : RocksdbCompactionfilterfactoryT)
 #  option set_comparator(x0 : RocksdbOptionsT, x1 : RocksdbComparatorT)
@@ -39,7 +39,7 @@ option_class Options do
   option set_expanded_compaction_factor
   option set_max_grandparent_overlap_factor
 #  option set_max_bytes_for_level_multiplier_additional(x0 : RocksdbOptionsT, level_values : LibC::Int*, num_levels : LibC::SizeT)
-#  option enable_statistics(x0 : RocksdbOptionsT)
+  option enable_statistics
 #  option statistics_get_string(opt : RocksdbOptionsT) : LibC::Char*
   option set_max_write_buffer_number
   option set_min_write_buffer_number_to_merge
@@ -59,8 +59,8 @@ option_class Options do
   option set_use_fsync
 #  option set_db_log_dir(x0 : RocksdbOptionsT, x1 : LibC::Char*)
 #  option set_wal_dir(x0 : RocksdbOptionsT, x1 : LibC::Char*)
-#  option set_wal_ttl_seconds = rocksdb_options_set_WAL_ttl_seconds(x0 : RocksdbOptionsT, x1 : Uint64T)
-#  option set_wal_size_limit_mb = rocksdb_options_set_WAL_size_limit_MB(x0 : RocksdbOptionsT, x1 : Uint64T)
+  option set_wal_ttl_seconds
+  option set_wal_size_limit_mb
   option set_manifest_preallocation_size
   option set_purge_redundant_kvs_while_flush
   option set_allow_os_buffer
@@ -80,8 +80,8 @@ option_class Options do
   option set_disable_auto_compactions
   option set_delete_obsolete_files_period_micros
   option set_source_compaction_factor
-#  option prepare_for_bulk_load(x0 : RocksdbOptionsT)
-#  option set_memtable_vector_rep(x0 : RocksdbOptionsT)
+  option prepare_for_bulk_load
+  option set_memtable_vector_rep
   option set_hash_skip_list_rep
   option set_hash_link_list_rep
   option set_plain_table_factory

@@ -121,14 +121,13 @@ db = RocksDB::DB.new("tmp/db1", options: opts, read_options: ropts, write_option
 
 ## Roadmap
 
-#### 0.3.0
-
-- [x] `keys` (String)
-- [x] `each` (String)
-
 #### 0.4.0
 
 - [x] readonly mode
+- [x] `Options`, `ReadOptions`, `WriteOptions`
+
+#### 0.5.0
+
 - [ ] Iterations for Binary
 
 ## Testing

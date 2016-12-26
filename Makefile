@@ -1,3 +1,4 @@
+SHELL=/bin/bash
 API_IMPLS := src/rocksdb/api.cr
 OPT_IMPLS := src/rocksdb/options.cr
 CMD_TESTS := $(shell find spec -name '*_spec.cr')
@@ -7,7 +8,7 @@ API_FILES := $(shell find doc/api -name '*.*')
 all: API.md spec
 
 .PHONY : test
-test: spec
+test: spec check_version_mismatch
 
 .PHONY : spec
 spec:
@@ -24,3 +25,7 @@ doc/api/impl: $(API_IMPLS) $(OPT_IMPLS) Makefile
 
 doc/api/test: $(CMD_TESTS) Makefile
 	grep -hv "^\s*#" $(CMD_TESTS) | grep -Phoe '(it|describe) "#(\w+)' | cut -d'#' -f2 | sort | uniq > $@
+
+.PHONY : check_version_mismatch
+check_version_mismatch: shard.yml README.md
+	diff -w -c <(grep version: README.md) <(grep ^version: shard.yml)

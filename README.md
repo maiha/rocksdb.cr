@@ -18,7 +18,7 @@ Add this to your application's `shard.yml`:
 dependencies:
   rocksdb:
     github: maiha/rocksdb.cr
-    version: 0.4.0
+    version: 0.5.0
 ```
 
 ## Usage
@@ -134,14 +134,9 @@ db = RocksDB::DB.new("tmp/db1", options: opts, read_options: ropts, write_option
 
 ## Roadmap
 
-#### 0.4.0
-
-- [x] readonly mode
-- [x] `Options`, `ReadOptions`, `WriteOptions`
-
 #### 0.5.0
 
-- [ ] Iterations for Binary
+- [x] Iterations for Binary
 
 ## Testing
 

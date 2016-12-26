@@ -6,7 +6,7 @@ describe "Iterator" do
   it "work" do
     db = RocksDB::DB.new(path)
     3.times{|i| db.put("k#{i}", i) }
-    iter = RocksDB::Iterator.new(db)
+    iter = RocksDB::StringIterator.new(db)
 
     iter.valid?.should be_false
     

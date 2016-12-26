@@ -2,7 +2,7 @@
 
 RocksDB client for [Crystal](http://crystal-lang.org/).
 
-- crystal: 0.20.0
+- crystal: 0.20.3 (at least 0.20.1 needed)
 
 
 ## Supported API

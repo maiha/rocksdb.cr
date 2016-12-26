@@ -34,7 +34,7 @@ describe "Iterations" do
   it "#new_iterator" do
     db = RocksDB::DB.new(path)
     iter = db.new_iterator
-    iter.should be_a(RocksDB::Iterator)
+    iter.should be_a(RocksDB::StringIterator)
     iter.close
     db.close
   end

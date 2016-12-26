@@ -2,7 +2,7 @@ module RocksDB::Commands
   include Api
 
   def new_iterator
-    Iterator.new(self)
+    StringIterator.new(self)
   end
   
   def each(&block)

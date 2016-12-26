@@ -1,17 +1,9 @@
-#abstract class RocksDB::Iterator(T)
-class RocksDB::Iterator
+abstract class RocksDB::Iterator(T)
   include Api
   include RawMemory(LibRocksDB::RocksdbIteratorT)
   
-#  protected abstract def zero : T
-#  protected abstract def underlying(ptr, size) : T
-  protected def zero
-    ""
-  end
-
-  protected def underlying(ptr, size) : String
-    String.new(ptr, size)
-  end
+  protected abstract def zero : T
+  protected abstract def underlying(ptr, size) : T
 
   def initialize(@db : DB, r_opts : ReadOptions? = nil)
     opts = (r_opts || @db.r_opts).not_nil!
@@ -73,7 +65,6 @@ class RocksDB::Iterator
 
 end
 
-{% if flag?(:fixed_issue3635) %}
 module RocksDB
   class StringIterator < Iterator(String)
     protected def zero
@@ -85,4 +76,3 @@ module RocksDB
     end
   end
 end
-{% end %}

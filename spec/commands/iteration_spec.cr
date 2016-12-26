@@ -21,6 +21,18 @@ describe "Iterations" do
     db.close
   end
 
+  it "#binary_keys" do
+    db = RocksDB::DB.new(path)
+    db.binary_keys.should eq([Bytes[107, 48], Bytes[107, 49], Bytes[107, 50]])
+    db.close
+  end
+
+  it "#binary_keys(limit)" do
+    db = RocksDB::DB.new(path)
+    db.binary_keys(2).should eq([Bytes[107, 48], Bytes[107, 49]])
+    db.close
+  end
+
   it "#each" do
     db = RocksDB::DB.new(path)
     items = [] of Tuple(String, String)
@@ -31,10 +43,28 @@ describe "Iterations" do
     db.close
   end
 
+  it "#binary_each" do
+    db = RocksDB::DB.new(path)
+    items = [] of Tuple(Bytes, Bytes)
+    db.binary_each do |k,v|
+      items << {k, v}
+    end
+    items.should eq([{Bytes[107, 48], Bytes[48]}, {Bytes[107, 49], Bytes[49]}, {Bytes[107, 50], Bytes[50]}])
+    db.close
+  end
+
   it "#new_iterator" do
     db = RocksDB::DB.new(path)
     iter = db.new_iterator
     iter.should be_a(RocksDB::StringIterator)
+    iter.close
+    db.close
+  end
+
+  it "#new_binary_iterator" do
+    db = RocksDB::DB.new(path)
+    iter = db.new_binary_iterator
+    iter.should be_a(RocksDB::BinaryIterator)
     iter.close
     db.close
   end

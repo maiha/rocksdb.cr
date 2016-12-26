@@ -54,7 +54,7 @@ db.put("foo", "1")  # raise RocksDB::Error("Not supported operation in read only
 db.keys            # => ["k0","k1","k2"]
 db.keys(2)         # => ["k0","k1"]
 
-db.each do |(k,v)|
+db.each do |k,v|
   ...
 ```
 
@@ -95,6 +95,19 @@ return value will be converted to String when accessed by String key.
 db.put(Bytes[0], Bytes[9])
 db.get(Bytes[0])  # => Bytes[9]
 db.get("\u{0}")   # => "\t"
+```
+
+#### binary iterator
+
+`binary_XXX` is available to treat data as binary
+
+- `binary_keys`
+- `binary_each`
+- `new_binary_iterator`
+
+```crystal
+db.keys        # => ["\t"]
+db.binary_keys # => [Bytes[9]]
 ```
 
 ### database options

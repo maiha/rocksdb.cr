@@ -1,5 +1,8 @@
+binary_each
+binary_keys
 each
 keys
+new_binary_iterator
 new_iterator
 rocksdb_close
 rocksdb_create_iterator

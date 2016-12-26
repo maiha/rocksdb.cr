@@ -75,4 +75,14 @@ module RocksDB
       String.new(ptr, size)
     end
   end
+
+  class BinaryIterator < Iterator(Bytes)
+    protected def zero
+      Bytes.new(0)
+    end
+
+    protected def underlying(ptr, size) : Bytes
+      Bytes.new(size).tap(&.copy_from(ptr, size))
+    end
+  end
 end

@@ -2,7 +2,7 @@
 
 RocksDB client for [Crystal](http://crystal-lang.org/).
 
-- crystal: 0.20.4 (at least 0.20.1 needed)
+- crystal: 0.23.1
 
 
 ## Supported API
@@ -18,7 +18,7 @@ Add this to your application's `shard.yml`:
 dependencies:
   rocksdb:
     github: maiha/rocksdb.cr
-    version: 0.5.0
+    version: 0.5.1
 ```
 
 ## Usage

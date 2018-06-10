@@ -1,7 +1,18 @@
 language: crystal
-addons:
-  apt:
-    packages:
-    - librocksdb-dev
+sudo: true
 script:
   - make test
+
+before_install:
+  - sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test
+  - sudo apt-get update -qq
+  - sudo apt-get install gcc g++ libsnappy-dev zlib1g-dev libbz2-dev -qq
+
+install:
+  - git clone https://github.com/facebook/rocksdb.git /tmp/rocksdb
+  - pushd /tmp/rocksdb
+  - make clean
+  - make shared_lib
+  - sudo make install-shared
+  - sudo ln -s /usr/local/lib/librocksdb* /usr/lib
+  - popd

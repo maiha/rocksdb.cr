@@ -1,8 +1,8 @@
-# rocksdb.cr
+# rocksdb.cr [![Build Status](https://travis-ci.org/maiha/rocksdb.cr.svg?branch=master)](https://travis-ci.org/maiha/rocksdb.cr)
 
 RocksDB client for [Crystal](http://crystal-lang.org/).
 
-- crystal: 0.23.1
+- crystal: 0.24.2
 
 
 ## Supported API
@@ -140,8 +140,7 @@ db = RocksDB::DB.new("tmp/db1", options: opts, read_options: ropts, write_option
 
 ## Testing
 
-- Manual test has passed in local with `librocksdb-dev`
-- Unfortunately, we can't run ci on TravisCI which doesn't support ubuntu-16.04.
+- Now Travis CI is ready by https://github.com/maiha/rocksdb.cr/pull/3
 
 ## Contributing
 

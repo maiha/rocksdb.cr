@@ -7,8 +7,8 @@ API_FILES := $(shell find doc/api -name '*.*')
 .PHONY : all
 all: API.md spec
 
-.PHONY : test
-test: spec check_version_mismatch
+.PHONY : ci
+ci: check_version_mismatch spec
 
 .PHONY : spec
 spec:

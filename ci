@@ -1,0 +1,6 @@
+#!/bin/zsh
+
+set -eu
+
+for x in 0.27.2 0.31.1 0.32.1 0.33.0 0.34.0; (echo $x; crenv local $x && make ci)
+

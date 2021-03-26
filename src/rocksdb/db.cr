@@ -33,13 +33,13 @@ class RocksDB::DB
     @opened = true
   end
 
-  protected def free
+  protected def free : Nil
     @closables.each(&.close)
     @closables.clear
     rocksdb_close(@raw.not_nil!)
   end
 
-  protected def clue
+  protected def clue : String
     @path
   end
 

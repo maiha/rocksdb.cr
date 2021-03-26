@@ -10,11 +10,11 @@ macro option_class(klass)
       @opened = true
     end
 
-    protected def free
+    protected def free : Nil
       rocksdb_{{ method.id }}_destroy(raw)
     end
 
-    protected def clue
+    protected def clue : String
       {{ klass.stringify }}
     end
 

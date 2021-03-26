@@ -52,11 +52,11 @@ abstract class RocksDB::Iterator(T)
     @len.value == 0 ? nil : underlying(ptr, @len.value)
   end
 
-  protected def free
+  protected def free : Nil
     rocksdb_iter_destroy(raw)
   end
 
-  protected def clue
+  protected def clue : String
     "iter"
   end
 
@@ -67,7 +67,7 @@ end
 
 module RocksDB
   class StringIterator < Iterator(String)
-    protected def zero
+    protected def zero : String
       ""
     end
 
@@ -77,7 +77,7 @@ module RocksDB
   end
 
   class BinaryIterator < Iterator(Bytes)
-    protected def zero
+    protected def zero : Bytes
       Bytes.new(0)
     end
 

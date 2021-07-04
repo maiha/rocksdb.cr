@@ -27,6 +27,7 @@ module RocksDB::Api
   try rocksdb_get
   try rocksdb_put
   try rocksdb_delete
+  api rocksdb_free
 
   # ## Iteration
 

@@ -8,7 +8,7 @@ module RocksDB::Commands
 
   def get?(key : String) : String?
     ptr = rocksdb_get(raw, @r_opts.raw, key, key.bytesize, @len)
-    @len.value == 0 ? nil : String.new(ptr, @len.value)
+    @len.value == 0 ? nil : String.new(ptr, @len.value).tap{ rocksdb_free(ptr) }
   end
 
   def get(key : Bytes) : Bytes

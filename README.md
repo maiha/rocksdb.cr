@@ -17,7 +17,7 @@ Add this to your application's `shard.yml`:
 dependencies:
   rocksdb:
     github: maiha/rocksdb.cr
-    version: 1.0.0
+    version: 1.0.1
 ```
 
 ## Usage

@@ -3,7 +3,7 @@ module RocksDB::Commands
   
   def get?(key : Bytes) : Bytes?
     ptr = rocksdb_get(raw, @r_opts.raw, key, key.bytesize, @len)
-    @len.value == 0 ? nil : Bytes.new(ptr, @len.value)
+    @len.value == 0 ? nil : Bytes.new(@len.value).tap(&.copy_from(ptr, @len.value)).tap{ rocksdb_free(ptr) }
   end
 
   def get?(key : String) : String?

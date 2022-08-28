@@ -1,6 +1,10 @@
 name: rocksdb
 version: 1.0.1
 
+development_dependencies:
+  pretty:
+    github: maiha/pretty.cr
+          
 authors:
   - maiha <maiha@wota.jp>
 

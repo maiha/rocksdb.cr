@@ -62,4 +62,8 @@ module RocksDB::Commands
   def flush(options : FlushOptions)
     rocksdb_flush(raw, options.raw)
   end
+
+  def write(write_batch : WriteBatch, write_opts : WriteOptions)
+    rocksdb_write(raw, write_opts.raw, write_batch.raw)
+  end
 end

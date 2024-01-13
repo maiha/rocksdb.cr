@@ -60,4 +60,5 @@ describe RocksDB do
     end
     db.close
   end
+
 end

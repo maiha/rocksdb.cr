@@ -29,6 +29,7 @@ module RocksDB::Api
   try rocksdb_delete
   api rocksdb_free
   try rocksdb_flush
+  try rocksdb_write
 
   # ## Iteration
 
@@ -45,6 +46,13 @@ module RocksDB::Api
 
   #  fun rocksdb_iter_seek(x0 : RocksdbIteratorT, k : LibC::Char*, klen : LibC::SizeT)
   #  fun rocksdb_iter_get_error(x0 : RocksdbIteratorT, errptr : LibC::Char**)
+
+  # ## Write Batch
+  api rocksdb_writebatch_create
+  api rocksdb_writebatch_destroy
+  api rocksdb_writebatch_clear
+  api rocksdb_writebatch_count
+  api rocksdb_writebatch_delete_range
 
   # ## Options
 

@@ -91,6 +91,7 @@ lib LibRocksDB
   fun rocksdb_writebatch_merge_cf(x0 : RocksdbWritebatchT, column_family : RocksdbColumnFamilyHandleT, key : LibC::Char*, klen : LibC::SizeT, val : LibC::Char*, vlen : LibC::SizeT)
   fun rocksdb_writebatch_mergev(b : RocksdbWritebatchT, num_keys : LibC::Int, keys_list : LibC::Char**, keys_list_sizes : LibC::SizeT*, num_values : LibC::Int, values_list : LibC::Char**, values_list_sizes : LibC::SizeT*)
   fun rocksdb_writebatch_mergev_cf(b : RocksdbWritebatchT, column_family : RocksdbColumnFamilyHandleT, num_keys : LibC::Int, keys_list : LibC::Char**, keys_list_sizes : LibC::SizeT*, num_values : LibC::Int, values_list : LibC::Char**, values_list_sizes : LibC::SizeT*)
+  fun rocksdb_writebatch_delete_range(x0 : RocksdbWritebatchT, begin_key : LibC::Char*, end_key : LibC::Char*)
   fun rocksdb_writebatch_delete(x0 : RocksdbWritebatchT, key : LibC::Char*, klen : LibC::SizeT)
   fun rocksdb_writebatch_delete_cf(x0 : RocksdbWritebatchT, column_family : RocksdbColumnFamilyHandleT, key : LibC::Char*, klen : LibC::SizeT)
   fun rocksdb_writebatch_deletev(b : RocksdbWritebatchT, num_keys : LibC::Int, keys_list : LibC::Char**, keys_list_sizes : LibC::SizeT*)

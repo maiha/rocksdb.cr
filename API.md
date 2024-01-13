@@ -1,5 +1,5 @@
 # Supported API
-## Implemented 38% (101/259)
+## Implemented 40% (106/259)
 ### Database (3 / 24)
 
 |Command                                              |impl|test|note|
@@ -64,7 +64,7 @@
 |`rocksdb_iter_value`        |  ✓ |  ✓ |    |
 |`rocksdb_iter_get_error`    |    |    |    |
 
-### Snapshots (0 / 15)
+### Snapshots (1 / 15)
 
 |Command                         |impl|test|note|
 |--------------------------------|:--:|:--:|----|
@@ -78,7 +78,7 @@
 |`rocksdb_compact_range_cf`      |    |    |    |
 |`rocksdb_delete_file`           |    |    |    |
 |`rocksdb_livefiles`             |    |    |    |
-|`rocksdb_flush`                 |    |    |    |
+|`rocksdb_flush`                 |  ✓ |    |    |
 |`rocksdb_disable_file_deletions`|    |    |    |
 |`rocksdb_enable_file_deletions` |    |    |    |
 |`rocksdb_destroy_db`            |    |    |    |
@@ -262,7 +262,7 @@
 |`rocksdb_writeoptions_set_sync`   |  ✓ |  ✓ |    |
 |`rocksdb_writeoptions_disable_wal`|  ✓ |  ✓ |    |
 
-### Compaction (0 / 38)
+### Compaction (3 / 38)
 
 |Command                                                                  |impl|test|note|
 |-------------------------------------------------------------------------|:--:|:--:|----|
@@ -279,9 +279,9 @@
 |`rocksdb_filterpolicy_create_bloom`                                      |    |    |    |
 |`rocksdb_mergeoperator_create`                                           |    |    |    |
 |`rocksdb_mergeoperator_destroy`                                          |    |    |    |
-|`rocksdb_flushoptions_create`                                            |    |    |    |
-|`rocksdb_flushoptions_destroy`                                           |    |    |    |
-|`rocksdb_flushoptions_set_wait`                                          |    |    |    |
+|`rocksdb_flushoptions_create`                                            |  ✓ |    |    |
+|`rocksdb_flushoptions_destroy`                                           |  ✓ |    |    |
+|`rocksdb_flushoptions_set_wait`                                          |  ✓ |    |    |
 |`rocksdb_cache_create_lru`                                               |    |    |    |
 |`rocksdb_cache_destroy`                                                  |    |    |    |
 |`rocksdb_create_default_env`                                             |    |    |    |
@@ -317,10 +317,10 @@
 |`rocksdb_livefiles_largestkey` |    |    |    |
 |`rocksdb_livefiles_destroy`    |    |    |    |
 
-### Misc (0 / 2)
+### Misc (1 / 2)
 
 |Command                          |impl|test|note|
 |---------------------------------|:--:|:--:|----|
 |`rocksdb_get_options_from_string`|    |    |    |
-|`rocksdb_free`                   |    |    |    |
+|`rocksdb_free`                   |  ✓ |    |    |
 

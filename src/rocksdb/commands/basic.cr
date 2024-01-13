@@ -58,4 +58,8 @@ module RocksDB::Commands
   def delete(key : String)
     rocksdb_delete(raw, @w_opts.raw, key, key.bytesize)
   end
+
+  def flush(options : FlushOptions)
+    rocksdb_flush(raw, options.raw)
+  end
 end

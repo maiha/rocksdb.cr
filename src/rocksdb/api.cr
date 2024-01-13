@@ -28,6 +28,7 @@ module RocksDB::Api
   try rocksdb_put
   try rocksdb_delete
   api rocksdb_free
+  try rocksdb_flush
 
   # ## Iteration
 
@@ -53,5 +54,8 @@ module RocksDB::Api
   api rocksdb_readoptions_destroy
   api rocksdb_writeoptions_create
   api rocksdb_writeoptions_destroy
+  api rocksdb_flushoptions_create
+  api rocksdb_flushoptions_destroy
+  api rocksdb_flushoptions_set_wait
   # see `options.cr` for more option commands
 end

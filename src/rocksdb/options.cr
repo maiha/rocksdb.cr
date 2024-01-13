@@ -108,3 +108,9 @@ option_class WriteOptions do
   option set_sync
   option disable_wal
 end
+
+option_class FlushOptions do
+  # option set_sync
+  option set_wait
+  option set_allow_write_stall
+end

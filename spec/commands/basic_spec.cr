@@ -29,7 +29,7 @@ describe "Basic Operations" do
     end
   end
 
-  describe ".flush" do
+  describe "#flush" do
     it "flushes data to disk" do
       db = RocksDB::DB.new(path)
       db.put(Bytes[0], Bytes[9])
@@ -42,6 +42,18 @@ describe "Basic Operations" do
       db.get(Bytes[0]).should eq(Bytes[9])
       db.close
     end
+  end
+
+  describe "#write" do
+      it "writes with writeoptions" do
+        batch = RocksDB::WriteBatch.new
+
+        wopts = RocksDB::WriteOptions.new
+        wopts.disable_wal(1)
+
+        db = RocksDB::DB.new(path)
+        db.write(batch, wopts).should eq nil
+      end
   end
 
   # mark for api document

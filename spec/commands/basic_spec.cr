@@ -29,6 +29,21 @@ describe "Basic Operations" do
     end
   end
 
+  describe ".flush" do
+    it "flushes data to disk" do
+      db = RocksDB::DB.new(path)
+      db.put(Bytes[0], Bytes[9])
+      flush_options = RocksDB::FlushOptions.new
+      flush_options.set_wait(1)
+      db.flush flush_options
+      db.close
+
+      db = RocksDB::DB.new(path)
+      db.get(Bytes[0]).should eq(Bytes[9])
+      db.close
+    end
+  end
+
   # mark for api document
   it "#rocksdb_open" do
   end
